@@ -1,8 +1,10 @@
 import "../../../../styles/common/utilities.css"
 import "../../../../styles/common/colors.css"
 import "../signup/style.css"
+import { useState } from "react"
 
 const Login = () => {
+  // const [first, setfirst] = useState(second)
   return(
     <div className="flex column center auth-warapper">
       <h2 className="col-primary">LinkedIn</h2>

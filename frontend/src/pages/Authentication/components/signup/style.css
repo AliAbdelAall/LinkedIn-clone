@@ -1,0 +1,36 @@
+.signup-warapper{
+  gap: 15px;
+  border: 2px solid rgb(34, 34, 34);
+  padding: 20px;
+  border-radius: 5px;
+  width: 350px;
+}
+
+.signup-warapper input{
+  width: 100%;
+  padding: 10px 0;
+  outline: none;
+  border: 1px solid rgb(34, 34, 34);
+  border-radius: 3px;
+  
+}
+
+.signup-warapper button{
+  width: 100%;
+  padding: 7px 0;
+  font-size: 20px;
+  color: white;
+  border: 0px;
+  outline: none;
+  border-radius: 3px;
+}
+
+.signup-warapper p{
+  font-size: 14px;
+}
+
+.signup-warapper button:hover,
+.signup-warapper span:hover{
+  opacity: 80%;
+  cursor: pointer;
+}

@@ -1,8 +1,12 @@
+import Signup from "./components/signup"
+import "../../styles/common/utilities.css"
+import "./style.css"
+
 const Authentication = () => {
   return(
-    <div className="auth">
+    <div className="flex center auth">
       <div>
-        <p>hello world!</p>
+        <Signup></Signup>
       </div>
     </div>
   )

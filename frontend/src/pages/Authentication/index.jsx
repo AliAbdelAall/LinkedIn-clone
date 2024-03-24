@@ -150,8 +150,6 @@ const Authentication = () => {
         setCredentials = {setCredentials}
         ></Signup>
       )}
-
-      {/* {isUserLogedIn ? (<p>i am loged in</p>): (<p>i am not loged in</p>)} */}
       
 
     </div>

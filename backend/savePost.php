@@ -6,7 +6,7 @@ $image = $_POST['image'];
 $user_id = $_POST['user_id'];
 
 $query = $mysqli -> prepare('INSERT INTO posts (content, image, user_id) VALUES (?, ?, ?)');
-$query -> bind_param("ssi", $content, $image, $user_id);
+$query -> bind_param("sbi", $content, $image, $user_id);
 if($query -> execute()){
   $response['status'] = "sucsess";
   $response['message'] = "post saved successfully";;

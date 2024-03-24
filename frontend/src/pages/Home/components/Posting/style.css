@@ -80,3 +80,7 @@
   cursor: pointer;
   opacity: 80%;
 }
+
+.post-img{
+  max-width: 100%;
+}

@@ -7,11 +7,18 @@ import Post from './components/Post'
 
 const Home = () => {
   const [image, setImage] = useState(null)
+  const [blob, setBlob] = useState("")
+  const [postInput, setPostInput] = useState("")
+  const [incorrect, setIncorrect] = useState(false)
+  const [error, setError] = useState("")
 
-  const handleImageChange = (e) => {
-    const file = e.target.files[0]
-    setImage(file)
-  }
+  const handleTextInputChange = (e) => {
+    const input = e.target.value
+    setPostInput(input)
+ }
+
+
+
 
   return (
     <div>
@@ -21,6 +28,12 @@ const Home = () => {
         image={image}
         setImage={setImage}
         handleImageChange={handleImageChange}
+        handleTextInputChange={handleTextInputChange}
+        validatePost={validatePost}
+        incorrect={incorrect}
+        setIncorrect={setIncorrect}
+        error={error}
+        setError={setError}
         ></Posting>
         <Post></Post>
       </div>

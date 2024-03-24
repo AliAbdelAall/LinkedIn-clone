@@ -6,11 +6,11 @@ import "./style.css"
 
 const Header = () => {
   const { image, setImage} = useState(null)
-
+  
   return (
     <header className='flex center header'>
       <div className='flex center linkedin-search-wrapper'>
-        <i class="fa-brands fa-linkedin col-primary"></i>
+        <i className="fa-brands fa-linkedin col-primary"></i>
         <div className='search-home gray'>
           <input type="text" placeholder = "Search"/>
           <i className="fa-solid fa-magnifying-glass"></i>
@@ -18,20 +18,20 @@ const Header = () => {
       </div>
       <nav className='flex center header-nav gray'>
         <div className='flex column center'>
-          <i class="fa-solid fa-house-chimney"></i>
+          <i className="fa-solid fa-house-chimney"></i>
           <p>Home</p>
         </div>
         <div className='flex column center'>
-          <i class="fa-solid fa-user-group"></i>
+          <i className="fa-solid fa-user-group"></i>
           <p>My Network</p>
         </div>
         <div className='flex column center'>
-          <i class="fa-solid fa-briefcase"></i>
+          <i className="fa-solid fa-briefcase"></i>
           <p>Jobs</p>
         </div>
         <div className='flex column center'>
           {/* {image && <img src={URL.createObjectURL(image)} alt="profile" />} */}
-          <i class="fa-solid fa-user"></i>
+          <i className="fa-solid fa-user"></i>
           <p>Me</p>
         </div>
       </nav>

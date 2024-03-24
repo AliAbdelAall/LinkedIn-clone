@@ -3,7 +3,7 @@ import "../../../../styles/common/colors.css"
 import "./style.css"
 
 const Signup = ({setIsLogin, handleInputChange, validateSignup, incorrect, setIncorrect, error, setError, credentials, setCredentials}) => {
- 
+
   return(
     <div className="flex column center auth-warapper">
       <h2 className="col-primary">LinkedIn</h2>
@@ -22,7 +22,7 @@ const Signup = ({setIsLogin, handleInputChange, validateSignup, incorrect, setIn
       <button className="bg-primary bold" onClick={validateSignup}>Signup</button>
       
 
-      <p>Already have an account? <span className="col-primary bold" onClick={() => setIsLogin(true)}>Login</span></p>
+      <p>Already have an account? <span className="col-primary bold" onClick={() => { setIncorrect(false); setIsLogin(true)}}>Login</span></p>
     </div>
   )
 }

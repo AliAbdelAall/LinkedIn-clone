@@ -14,7 +14,7 @@ const Authentication = () => {
   const [incorrect, setIncorrect] = useState(false)
   const [error, setError] = useState("")
   const [credentials, setCredentials] = useState({fName: "", lName: "", email: "",password: "", confPassword: ""})
-    
+  
   const handleInputChange = (e, field) => {
     setCredentials({ ...credentials, [field]: e.target.value })
   }

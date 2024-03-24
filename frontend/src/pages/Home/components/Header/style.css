@@ -1,0 +1,43 @@
+.header{
+  padding: 10px 40px;
+  gap: 30%;
+}
+
+.search-home{
+  position: relative;
+}
+
+.search-home > input{
+  padding: 5px 25px;
+  height: 100%;
+}
+
+
+
+.fa-linkedin{
+  font-size: 40px;
+}
+
+.fa-solid{
+  font-size:  24px;
+}
+
+.fa-magnifying-glass{
+  position: absolute;
+  left: 5px;
+  top: 50%;
+  transform: translateY(-55%);
+  font-size: 16px;
+}
+
+.header-nav{
+  gap: 20%;
+}
+
+.header-nav>div{
+  min-width: fit-content;
+}
+
+.header-nav p{
+  font-size: 12px;
+}

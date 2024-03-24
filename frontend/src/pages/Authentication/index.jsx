@@ -1,12 +1,14 @@
 import React from "react"
 import { useState } from "react"
-import Signup from "./components/signup"
-import Login from "./components/login"
+import { useNavigate } from "react-router-dom"
+import Signup from "./components/Signup"
+import Login from "./components/Login"
 import "../../styles/common/utilities.css"
 import "./style.css"
 
 
 const Authentication = () => {
+  const navigate = useNavigate()
   const [isUserLogedIn, setIsUserLogedIn] = useState(false)
   const [isLogin, setIsLogin] = useState(true)
   const [incorrect, setIncorrect] = useState(false)
@@ -55,6 +57,8 @@ const Authentication = () => {
           }else{
             setIncorrect(false)
             setIsUserLogedIn(true)
+            console.log(data.user_id)
+            navigate("/Home")
           }
         } catch (error) {
           console.error(error)

@@ -11,7 +11,7 @@ const Signup = ({setIsLogin, handleInputChange, validateSignup, incorrect, setIn
 
       <input type="text" placeholder="Last Name" onChange={(e) => handleInputChange(e, "lName")}/>
 
-      <input type="text" placeholder="Example@email.com" onChange={(e) => handleInputChange(e, "email")}/>
+      <input type="text" placeholder="Example@gmail.com" onChange={(e) => handleInputChange(e, "email")}/>
 
       <input type="password" placeholder="Password" onChange={(e) => handleInputChange(e, "password")}/>
 

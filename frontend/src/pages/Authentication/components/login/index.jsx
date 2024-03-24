@@ -11,8 +11,8 @@ const Login = () => {
       <input type="text" placeholder="Example@email.com"/>
       <input type="password" placeholder="Password"/>
       <p className="incorrect red invisible">Incorrect Username or Password</p>
-      <button className="bg-primary bold">Signup</button>
-      <p>Don't have an account? <span className="col-primary bold">Login</span></p>
+      <button className="bg-primary bold">Login</button>
+      <p>Don't have an account? <span className="col-primary bold">Signup</span></p>
     </div>
   )
 }

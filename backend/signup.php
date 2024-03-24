@@ -23,7 +23,7 @@ if ($user_exists === 0){
   $response['status'] = "success";
   $response['message'] = "user was created successfully";
 }else{
-  $response['status'] = "faild";
+  $response['status'] = "failed";
   $response['message'] = "user already exists";
 }
 

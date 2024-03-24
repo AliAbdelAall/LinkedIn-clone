@@ -1,9 +1,12 @@
 import React from 'react'
+import { useState } from 'react'
 import "../../../../styles/common/utilities.css"
 import "../../../../styles/common/colors.css"
 import "./style.css"
 
 const Header = () => {
+  const { image, setImage} = useState(null)
+
   return (
     <header className='flex center header'>
       <div className='flex center linkedin-search-wrapper'>
@@ -27,6 +30,7 @@ const Header = () => {
           <p>Jobs</p>
         </div>
         <div className='flex column center'>
+          {/* {image && <img src={URL.createObjectURL(image)} alt="profile" />} */}
           <i class="fa-solid fa-user"></i>
           <p>Me</p>
         </div>

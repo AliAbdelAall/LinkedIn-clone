@@ -17,7 +17,7 @@ const App = () => {
         
         <Route path = "/home" element = {
         <Home 
-        userId={userId} 
+        
         />}/>
 
       </Routes>

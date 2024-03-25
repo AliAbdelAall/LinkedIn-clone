@@ -5,11 +5,10 @@ import Header from './components/Header'
 import Posting from './components/Posting'
 import Post from './components/Post'
 
-const Home = ({userId}) => {
-  console.log(userId)
+const Home = () => {
+  const [userId, setUserId] = useState()
   const [image, setImage] = useState(null)
-  const [posts, setPosts] = useState(null)
-  const [postImage, setPostImage] = useState(null)
+  const [posts, setPosts] = useState([])
   const [postInput, setPostInput] = useState("")
   const [incorrect, setIncorrect] = useState(false)
   const [error, setError] = useState("")
@@ -24,7 +23,7 @@ const Home = ({userId}) => {
       const postsList = await response.json()
       if(postsList.status === "success"){
         setPosts(postsList.posts)
-        console.log(posts)
+
       }
     }catch(error){
       console.error(error)
@@ -33,6 +32,7 @@ const Home = ({userId}) => {
 
   useEffect(()=>{
     loadPosts ()
+    setUserId(localStorage.getItem("userId"))
   },[])
   
 
@@ -51,12 +51,10 @@ const Home = ({userId}) => {
         reader.onloadend = () => {
           const result = reader.result
           setImage(result)
-          setPostImage(result)
           
         };
         reader.readAsDataURL(file);
         console.log(image)
-        console.log(postImage)
       }else{
         setError("File is not an image");
         setIncorrect(true);
@@ -121,21 +119,20 @@ const Home = ({userId}) => {
         setPostInput={setPostInput}
         postInput={postInput}
         ></Posting>
-        <Post 
-
-        ></Post>
+        
       </div>
-      {/* <div>
-         {posts.map(post => (
+      <div className='flex center column'>
+         {posts?.map(post => (
           <Post 
-          key ={post.user_id} 
+          key ={post.post_id} 
           firstName={post.first_name} 
-          firstName={post.first_name} 
+          lastName={post.last_name} 
+          // userProfile={post.user_profile}
           content = {post.content}
-          image = {post.post_image} 
+          postImage = {post.post_image} 
           />
         ))}
-      </div> */}
+      </div>
     </div>
   )
 }

@@ -8,6 +8,7 @@ import Post from './components/Post'
 const Home = ({userId}) => {
   console.log(userId)
   const [image, setImage] = useState(null)
+  const [postImage, setPostImage] = useState(null)
   const [postInput, setPostInput] = useState("")
   const [incorrect, setIncorrect] = useState(false)
   const [error, setError] = useState("")
@@ -28,11 +29,14 @@ const Home = ({userId}) => {
 
         const reader = new FileReader();
         reader.onloadend = () => {
-          setImage(reader.result)
+          const result = reader.result
+          setImage(result)
+          setPostImage(result)
           
         };
         reader.readAsDataURL(file);
         console.log(image)
+        console.log(postImage)
       }else{
         setError("File is not an image");
         setIncorrect(true);
@@ -102,7 +106,7 @@ const Home = ({userId}) => {
         setPostInput={setPostInput}
         postInput={postInput}
         ></Posting>
-        <Post></Post>
+        <Post postImage={postImage}></Post>
       </div>
       {/* <div>
          {postsList.map(post => (
@@ -114,4 +118,3 @@ const Home = ({userId}) => {
 }
 
 export default Home
-

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import "./style.css"
 import "../../../../styles/common/utilities.css"
 import "../../../../styles/common/colors.css"
-const Posting = ({ image, setImage, handleImageChange, validatePost, incorrect, textInputRef, setIncorrect, error, setError, setPostInput, postInput}) => {
+const Posting = ({ image,handleImageChange, validatePost, incorrect,  error,  setPostInput, postInput}) => {
   
 
   return (

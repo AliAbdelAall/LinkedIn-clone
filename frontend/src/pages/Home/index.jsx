@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
 import "./style.css"
 import "../../styles/common/utilities.css"
 import Header from './components/Header'
@@ -8,12 +8,32 @@ import Post from './components/Post'
 const Home = ({userId}) => {
   console.log(userId)
   const [image, setImage] = useState(null)
+  const [posts, setPosts] = useState(null)
   const [postImage, setPostImage] = useState(null)
   const [postInput, setPostInput] = useState("")
   const [incorrect, setIncorrect] = useState(false)
   const [error, setError] = useState("")
-  const textInputRef = useRef(null);
+  
+  const loadPosts = async () => {
+    try{
+      const response =  await fetch(
+        "http://127.0.0.1/LinkedIn-clone/backend/getPosts.php",{
+          method: "GET"
+        }
+      );
+      const postsList = await response.json()
+      if(postsList.status === "success"){
+        setPosts(postsList.posts)
+        console.log(posts)
+      }
+    }catch(error){
+      console.error(error)
+    }
+  }
 
+  useEffect(()=>{
+    loadPosts ()
+  },[])
   
 
   const handleImageChange = (e) => {
@@ -94,23 +114,26 @@ const Home = ({userId}) => {
       <div className='flex center column'>
         <Posting 
         image={image}
-        setImage={setImage}
         handleImageChange={handleImageChange}
-
         validatePost={validatePost}
         incorrect={incorrect}
-        setIncorrect={setIncorrect}
         error={error}
-        setError={setError}
-        textInputRef={textInputRef}
         setPostInput={setPostInput}
         postInput={postInput}
         ></Posting>
-        <Post postImage={postImage}></Post>
+        <Post 
+
+        ></Post>
       </div>
       {/* <div>
-         {postsList.map(post => (
-          <Post user ={post.user} imag = {post.image} content = {post}/>
+         {posts.map(post => (
+          <Post 
+          key ={post.user_id} 
+          firstName={post.first_name} 
+          firstName={post.first_name} 
+          content = {post.content}
+          image = {post.post_image} 
+          />
         ))}
       </div> */}
     </div>

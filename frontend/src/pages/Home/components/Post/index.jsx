@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import "../../../../styles/common/utilities.css"
 import "./style.css"
+import profile from "../../../../assests/profile.jpg"
 
-const Posts = (postImage) => {
+const Posts = (firstName,lastName, content, postImage) => {
   return (
     <div className='flex column post-wrapper'>
       <div className='flex space-between'>
@@ -13,7 +14,7 @@ const Posts = (postImage) => {
         <button>follow</button>
       </div>
       <p>dwasdwa</p>
-      {postImage && <img src={postImage} alt="postImage" />} 
+      {profile && <img className='post-img' src={profile} alt="postImage" />} 
 
     </div>
   )

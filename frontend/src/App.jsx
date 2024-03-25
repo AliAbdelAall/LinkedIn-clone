@@ -9,18 +9,17 @@ const App = () => {
     <div className="App">
       <BrowserRouter>
       <Routes>
+
+        <Route path = "/" element = {
+        <Authentication
+         setUserId={setUserId}
+         ></Authentication>}/>
         
         <Route path = "/home" element = {
         <Home 
         userId={userId} 
         />}/>
 
-        <Route path = "/auth" element = {
-        <Authentication
-         setUserId={setUserId}
-         ></Authentication>}/>
-
-        <Route index element={<Authentication setUserId={setUserId}/>}/>
       </Routes>
       </BrowserRouter>
       

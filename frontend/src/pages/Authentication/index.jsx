@@ -53,6 +53,7 @@ const Authentication = ({setUserId}) => {
 
           if(data.status === "success"){
             localStorage.setItem("userId", JSON.stringify(data.user_id))
+            console.log(data.user_id)
             setUserId(data.user_id)
             setIncorrect(false)
             navigate("/Home")

@@ -1,13 +1,17 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import profile from "../../assests/profile.jpg"
+import "./style.css"
 
 const Profile = () => {
+  // const [userId, setUserId] = useState("")
+  const [userInfo, setUserInfo] = useState({})
+  const userId = localStorage.getItem("userId")
+
 
   const loadUserInfo = async () => {
-    const [userId, setUserId] = useState()
-    const [userInfo, setUserInfo] = useState()
 
-    setUserId(localStorage.getItem("userId"))
+    
+    console.log(userId)
     try{
       const response =  await fetch(
         `http://127.0.0.1/LinkedIn-clone/backend/getUserInfo.php?user_id=${userId}`,{
@@ -17,6 +21,7 @@ const Profile = () => {
       const user = await response.json()
       if(user.status === "success"){
         setUserInfo(user.user_info)
+        console.log(user.user_info)
 
       }
     }catch(error){
@@ -26,21 +31,20 @@ const Profile = () => {
 
   useEffect(()=>{
     loadUserInfo ()
-
   },[])
 
 
   return (
-    <div >
-      <div>
-        <img src={profile} alt="" />
-        <p>{`${firstName} ${lastName}`}</p>
+    <div className='flex center column profile-wrapper'>
+      <div className='flex column align-center image-wrapper'>
+        <img src={profile} alt="profile" />
+        <p>{`${userInfo.first_name} ${userInfo.last_name}`}</p>
       </div>
-      <div>
-        <p>{`Email: ${email}`}</p>
-        <p>{`Experience: ${experience}`}</p>
-        <p>{`Skills: ${skills}`}</p>
-        <p>{`Bio: ${bio}`}</p>
+      <div className='flex column info-wrapper'>
+        <p>{`Email: ${userInfo.email}`}</p>
+        <p>{`Experience: ${userInfo.experience}`}</p>
+        <p>{`Skills: ${userInfo.skills}`}</p>
+        <p>{`Bio: ${userInfo.bio}`}</p>
       </div>
     </div>
   )

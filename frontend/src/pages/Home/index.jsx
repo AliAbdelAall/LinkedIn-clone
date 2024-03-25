@@ -6,7 +6,7 @@ import Posting from './components/Posting'
 import Post from './components/Post'
 
 const Home = () => {
-  const [userId, setUserId] = useState()
+  const userId = localStorage.getItem("userId")
   const [image, setImage] = useState(null)
   const [posts, setPosts] = useState([])
   const [postInput, setPostInput] = useState("")
@@ -23,7 +23,6 @@ const Home = () => {
       const postsList = await response.json()
       if(postsList.status === "success"){
         setPosts(postsList.posts)
-
       }
     }catch(error){
       console.error(error)
@@ -32,7 +31,8 @@ const Home = () => {
 
   useEffect(()=>{
     loadPosts ()
-    setUserId(localStorage.getItem("userId"))
+    
+    console.log(userId)
   },[])
   
 

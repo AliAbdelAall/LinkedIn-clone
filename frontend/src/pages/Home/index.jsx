@@ -5,7 +5,8 @@ import Header from './components/Header'
 import Posting from './components/Posting'
 import Post from './components/Post'
 
-const Home = () => {
+const Home = ({userId}) => {
+  console.log(userId)
   const [image, setImage] = useState(null)
   const [blob, setBlob] = useState("")
   const [postInput, setPostInput] = useState("")
@@ -47,7 +48,40 @@ const Home = () => {
     } 
   }
 
-
+  const validatePost = async () => {
+    if (!postInput || !image){
+      setError("Fill all fields")
+      setIncorrect(true)
+    }else{
+      setIncorrect(false)
+      try {
+        const formData = new FormData
+        formData.append("content", postInput)
+        formData.append("post_image", image)
+        formData.append("user_id", userId)
+       
+        
+        const response =  await fetch(
+          "http://127.0.0.1/LinkedIn-clone/backend/savePost.php",{
+            method: "POST",
+            body: formData
+          }
+        );
+        const data = await response.json()
+        console.log(data)
+        if(data.status !== "success"){
+          setIncorrect(true)
+          setError("Failed to upload")
+        }else{
+          setError("failed to post")
+          setIncorrect(false)
+        }
+      } catch (error) {
+        console.error(error)
+      }
+    }
+    
+  }
 
   return (
     <div>

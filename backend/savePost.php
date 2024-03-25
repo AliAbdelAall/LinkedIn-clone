@@ -2,13 +2,13 @@
 include("connection.php");
 
 $content = $_POST['content'];
-$image = $_POST['image'];
+$post_image = $_POST['post_image'];
 $user_id = $_POST['user_id'];
 
-$query = $mysqli -> prepare('INSERT INTO posts (content, image, user_id) VALUES (?, ?, ?)');
-$query -> bind_param("sbi", $content, $image, $user_id);
+$query = $mysqli -> prepare('INSERT INTO posts (content, post_image, user_id) VALUES (?, ?, ?)');
+$query -> bind_param("ssi", $content, $post_image, $user_id);
 if($query -> execute()){
-  $response['status'] = "sucsess";
+  $response['status'] = "success";
   $response['message'] = "post saved successfully";;
 
 }else{

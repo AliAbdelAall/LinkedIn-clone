@@ -7,9 +7,9 @@ import "../../styles/common/utilities.css"
 import "./style.css"
 
 
-const Authentication = () => {
+const Authentication = ({setUserId}) => {
   const navigate = useNavigate()
-  const [isUserLogedIn, setIsUserLogedIn] = useState(false)
+  
   const [isLogin, setIsLogin] = useState(true)
   const [incorrect, setIncorrect] = useState(false)
   const [error, setError] = useState("")
@@ -51,14 +51,15 @@ const Authentication = () => {
           );
           const data = await response.json()
 
-          if(data.status !== "success"){
-            setIncorrect(true)
-            setError("Incorrect Username or Password")
-          }else{
+          if(data.status === "success"){
+            setUserId(data.user_id)
             setIncorrect(false)
-            setIsUserLogedIn(true)
-            console.log(data.user_id)
             navigate("/Home")
+
+          }else{
+            setError("Failed to post")
+            setIncorrect(true)
+            
           }
         } catch (error) {
           console.error(error)
@@ -105,9 +106,9 @@ const Authentication = () => {
               body: formData
             }
           );
-          // console.log(response);
+
           const data = await response.json()
-          // console.log(data)
+
 
           if(data.status !== "success"){
             setIncorrect(true)

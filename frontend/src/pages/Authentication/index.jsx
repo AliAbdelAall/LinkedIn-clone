@@ -57,7 +57,7 @@ const Authentication = ({setUserId}) => {
             navigate("/Home")
 
           }else{
-            setError("Failed to post")
+            setError("Incorrect Email or Password")
             setIncorrect(true)
             
           }

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import "./style.css"
 import "../../../../styles/common/utilities.css"
 import "../../../../styles/common/colors.css"
-const Posting = ({ image, setImage, handleImageChange, handleTextInputChange, validatePost, incorrect, setIncorrect, error, setError}) => {
+const Posting = ({ image, setImage, handleImageChange, validatePost, incorrect, textInputRef, setIncorrect, error, setError, setPostInput, postInput}) => {
   
 
   return (
@@ -10,10 +10,18 @@ const Posting = ({ image, setImage, handleImageChange, handleTextInputChange, va
       <span className={`incorrect red ${incorrect? "" : "invisible"}`}>{`${error}`}</span>
       <div className='flex center post-inputs'>
         
-        <input className='text-input' type="text" placeholder='Start a post' onChange={handleTextInputChange}/>       
+        <input 
+        className='text-input' type="text" 
+        placeholder='Start a post' 
+        value ={postInput}
+        onChange={(e) => setPostInput(e.target.value)}
+        />       
         <div className='flex column file-input-button'>
           <label htmlFor="file-input" >Upload Image</label>
-          <input className='file-input' type="file" placeholder='Uplaod image' id='file-input'onChange={handleImageChange}/>
+          <input 
+          className='file-input' 
+          type="file" 
+          placeholder='Uplaod image' id='file-input'onChange={handleImageChange}/>
         </div>
       </div>
       <div >

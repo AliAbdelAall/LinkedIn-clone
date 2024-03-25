@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import "./style.css"
 import "../../styles/common/utilities.css"
 import Header from './components/Header'
@@ -8,15 +8,12 @@ import Post from './components/Post'
 const Home = ({userId}) => {
   console.log(userId)
   const [image, setImage] = useState(null)
-  const [blob, setBlob] = useState("")
   const [postInput, setPostInput] = useState("")
   const [incorrect, setIncorrect] = useState(false)
   const [error, setError] = useState("")
+  const textInputRef = useRef(null);
 
-  const handleTextInputChange = (e) => {
-    const input = e.target.value
-    setPostInput(input)
- }
+  
 
   const handleImageChange = (e) => {
     const file = e.target.files[0]
@@ -31,16 +28,11 @@ const Home = ({userId}) => {
 
         const reader = new FileReader();
         reader.onloadend = () => {
-          const result = reader.result
-          setImage(result)
-          const blob = new Blob([result], { type: file.type });
-          setBlob(blob)
+          setImage(reader.result)
           
-
         };
         reader.readAsDataURL(file);
         console.log(image)
-        console.log(blob)
       }else{
         setError("File is not an image");
         setIncorrect(true);
@@ -72,9 +64,18 @@ const Home = ({userId}) => {
         if(data.status !== "success"){
           setIncorrect(true)
           setError("Failed to upload")
+          setImage(null)
+          setPostInput("")
+          setError("")
+          
+          
         }else{
           setError("failed to post")
           setIncorrect(false)
+          setImage(null);
+          setPostInput("");
+          setError("")
+          
         }
       } catch (error) {
         console.error(error)
@@ -91,12 +92,15 @@ const Home = ({userId}) => {
         image={image}
         setImage={setImage}
         handleImageChange={handleImageChange}
-        handleTextInputChange={handleTextInputChange}
+
         validatePost={validatePost}
         incorrect={incorrect}
         setIncorrect={setIncorrect}
         error={error}
         setError={setError}
+        textInputRef={textInputRef}
+        setPostInput={setPostInput}
+        postInput={postInput}
         ></Posting>
         <Post></Post>
       </div>

@@ -108,7 +108,6 @@ const Home = () => {
 
   return (
     <div>
-      <Header></Header>
       <div className='flex center column'>
         <Posting 
         image={image}

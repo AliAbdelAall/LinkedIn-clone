@@ -4,7 +4,7 @@ import "./style.css"
 import "../../styles/common/utilities.css"
 
 const Profile = ({userId}) => {
-  const [image, setImage] = useState(null)
+  const [image, setImage] = useState("")
   const [isOpen, setIsOpen] = useState(false)
   const [experience, setExperience] = useState(false)
   const [skills, setSkills] = useState(false)
@@ -24,7 +24,7 @@ const Profile = ({userId}) => {
         setExperience(user.user_info.experience)
         setSkills(user.user_info.skills)
         setBio(user.user_info.bio)
-        setImage((user.user_info.profile_image))
+        setImage((user.user_info.user_profile))
         console.log(user.user_info)
 
       }
@@ -33,30 +33,41 @@ const Profile = ({userId}) => {
     }
   }
 
-const editProfile = () => {
-  try{
-    const result = fetch
-  }catch(error){
+const editProfile = async () => {
+  try {
+    const formData = new FormData()
+    formData.append("user_id", userId)
+    formData.append("user_profile", image)
+    formData.append("experience", experience)
+    formData.append("skills", skills)
+    formData.append("bio", bio)
+
+    const response = await fetch("http://127.0.0.1/LinkedIn-clone/backend/editProfile.php", {
+        method: 'POST',
+        body: formData
+    })
+
+    const data = await response.json()
+    console.log(data)
+} catch (error) {
     console.error(error)
-  }
+}
 }
 
 
   const handleImageChange = (e) => {
     const file = e.target.files[0]
-    console.log(file.type)
+    
     if(file){
       if (file.type === "image/png" ||
         file.type === "image/jpg" ||
         file.type === "image/jpeg"){
-        setIncorrect(false)
-      
-        console.log(file)
+        
+          console.log(file.type)
 
         const reader = new FileReader();
         reader.onloadend = () => {
-          const result = reader.result
-          setImage(result)
+          setImage(reader.result)
           
         };
         reader.readAsDataURL(file);
@@ -74,7 +85,7 @@ const editProfile = () => {
   return (
     <div className='flex center column profile-wrapper'>
       <div className='flex column align-center image-wrapper'>
-        <img src={profile} alt="profile" />
+        <img src={image} alt="profile" />
         <p>{`${userInfo.first_name} ${userInfo.last_name}`}</p>
       </div>
       <div className='flex column info-wrapper'>
@@ -116,7 +127,7 @@ const editProfile = () => {
             onChange={(e)=> setBio(e.target.value)}
             />    
           <div className='flex space-between'>
-            <button className='edit-btn white bg-primary bold' on>Confirm</button>
+            <button className='edit-btn white bg-primary bold' onClick={editProfile}>Confirm</button>
             <button className='edit-btn white bg-primary bold' onClick={(e)=> setIsOpen(false)}>Cancel</button>
           </div>
         </div>

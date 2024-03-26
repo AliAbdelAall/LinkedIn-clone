@@ -5,8 +5,8 @@ import Header from './components/Header'
 import Posting from './components/Posting'
 import Post from './components/Post'
 
-const Home = () => {
-  const userId = localStorage.getItem("userId")
+const Home = ({ userId }) => {
+  // const userId = localStorage.getItem("userId")
   const [image, setImage] = useState(null)
   const [posts, setPosts] = useState([])
   const [postInput, setPostInput] = useState("")

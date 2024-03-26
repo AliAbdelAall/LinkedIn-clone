@@ -1,12 +1,11 @@
 import React, {useState, useEffect} from 'react'
 import profile from "../../assests/profile.jpg"
 import "./style.css"
+import "../../styles/common/utilities.css"
 
-const Profile = () => {
-  // const [userId, setUserId] = useState("")
+const Profile = ({userId}) => {
+  const [isopen, setisopen] = useState(false)
   const [userInfo, setUserInfo] = useState({})
-  const userId = localStorage.getItem("userId")
-
 
   const loadUserInfo = async () => {
 
@@ -45,6 +44,40 @@ const Profile = () => {
         <p>{`Experience: ${userInfo.experience}`}</p>
         <p>{`Skills: ${userInfo.skills}`}</p>
         <p>{`Bio: ${userInfo.bio}`}</p>
+      </div>
+
+      <button className='edit-btn white bg-primary bold' onClick={()=> setisopen(true)}>Edit</button>
+      <div className={`flex center pupup ${isopen ? "" : "hidden"}`}>
+        <div className='flex column edit-popup'>
+          <input 
+              className='profile-input' 
+              type="file" 
+              placeholder='Uplaod image' 
+              id='profile-input'
+              />
+          
+          <input 
+            className='info-input' type="text" 
+            placeholder='Experience' 
+            // value ={userInfo.experience}
+            /> 
+
+          <input 
+            className='info-input' type="text" 
+            placeholder='Skills' 
+            // value ={userInfo.skills}
+            /> 
+              
+          <input 
+            className='info-input' type="text" 
+            placeholder='Bio' 
+            // value ={userInfo.bio} 
+            />    
+          <div className='flex space-between'>
+            <button className='edit-btn white bg-primary bold'>Confirm</button>
+            <button className='edit-btn white bg-primary bold' onClick={(e)=> setisopen(false)}>Cancel</button>
+          </div>
+        </div>
       </div>
     </div>
   )

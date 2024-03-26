@@ -11,10 +11,10 @@ const Post = ({firstName, lastName, userProfile, content, postImage}) => {
           <i className="fa-solid fa-user"></i>
           <p>{`${firstName} ${lastName}`}</p>
         </div>
-        <button>follow</button>
+        <button className='follow-btn white bold bg-primary'>Follow</button>
       </div>
       <p>{`${content}`}</p>
-      {profile && <img className='post-img' src={profile} alt="postImage" />} 
+      {postImage && <img className='post-img' src={postImage} alt="postImage" />} 
 
     </div>
   )

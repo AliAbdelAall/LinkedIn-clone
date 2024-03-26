@@ -7,7 +7,7 @@ import "../../styles/common/utilities.css"
 import "./style.css"
 
 
-const Authentication = ({setUserId}) => {
+const Authentication = ({ setUserId }) => {
   const navigate = useNavigate()
   
   const [isLogin, setIsLogin] = useState(true)

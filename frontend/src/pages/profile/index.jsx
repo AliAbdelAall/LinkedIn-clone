@@ -34,6 +34,7 @@ const Profile = ({userId}) => {
   }
 
 const editProfile = async () => {
+  setIsOpen(false)
   try {
     const formData = new FormData()
     formData.append("user_id", userId)

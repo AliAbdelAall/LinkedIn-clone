@@ -126,7 +126,7 @@ const Home = ({ userId }) => {
           key ={post.post_id} 
           firstName={post.first_name} 
           lastName={post.last_name} 
-          // userProfile={post.user_profile}
+          userProfile={post.user_profile}
           content = {post.content}
           postImage = {post.post_image} 
           />
